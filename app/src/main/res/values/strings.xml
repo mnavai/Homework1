@@ -1,3 +1,14 @@
+
 <resources>
+
     <string name="app_name">Pirate Places</string>
+    <string name="place_ecu">East Carolina University</string>
+    <string name="place_duke">Duke University</string>
+    <string name="place_ncsu">NC State University</string>
+    <string name="place_duke_visitors">Mary, Kevin</string>
+    <string name="place_ncsu_visitors">Rob, Mike and Sarah</string>
+    <string name="place_ecu_visitors">Shelly</string>
+    <string name="next_button">Next</string>
+    <string name="prev_button">Prev</string>
+
 </resources>
