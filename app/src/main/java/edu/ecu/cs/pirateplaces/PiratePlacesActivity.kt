@@ -77,6 +77,13 @@ class PiratePlacesActivity : AppCompatActivity() {
 
         }
 
+        placeTextView.setOnClickListener() {
+
+            val currentPlace = placesAndPeople[currentIndex].placeId
+            val intent = CheckInActivity.newIntent(this@PiratePlacesActivity, currentPlace)
+            startActivity(intent)
+        }
+
     }
 
         private fun advanceList() {

@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
-
-
-    <TextView
-        android:id="@+id/visitor_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:padding="30dp"
-        android:text="@string/place_duke_visitors" />
+    android:orientation="vertical"
+    tools:context="edu.ecu.cs.pirateplaces.CheckInActivity">
 
     <TextView
         android:id="@+id/place_textview"
@@ -25,6 +16,14 @@
         android:padding="40dp"
         android:text="@string/place_duke" />
 
+    <TextView
+        android:id="@+id/checkinstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:padding="40dp"
+        android:text="@string/notcheckedin_msg" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,18 +31,10 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/prev_button"
+            android:id="@+id/checkin_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/prev_button"
-            android:drawablePadding="10dp" />
-
-        <Button
-            android:id="@+id/next_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/next_button"
-            android:drawablePadding="10dp" />
+            android:text="@string/check_in_button" />
 
     </LinearLayout>
 

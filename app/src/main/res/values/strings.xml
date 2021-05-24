@@ -1,4 +1,3 @@
-
 <resources>
 
     <string name="app_name">Pirate Places</string>
@@ -10,5 +9,8 @@
     <string name="place_ecu_visitors">Shelly</string>
     <string name="next_button">Next</string>
     <string name="prev_button">Prev</string>
-
+    <string name="check_in_button">Check in</string>
+    <string name="checkedin_msg">Checked in</string>
+    <string name="notcheckedin_msg">Not Checked in!</string>
+    <string name="success_msg">You successfully checked in!</string>
 </resources>
