@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Toast
 
 
+
 const val EXTRA_CHECK_IN = "edu.ecu.cs.pirateplaces.checkin"
 private const val EXTRA_PLACE = "edu.ecu.cs.pirateplaces.current_place"
 
@@ -22,6 +23,7 @@ class CheckInActivity : AppCompatActivity() {
     private lateinit var checkinButton: Button
 
 
+    private var currentIndex = 0
     private var defaultStatus = "Not Checked in!"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,11 +35,16 @@ class CheckInActivity : AppCompatActivity() {
 
         checkinButton.setOnClickListener() {
 
+
             val newText: String = "Checked in!"
             statusTextView.text = newText
             Toast.makeText(this, "You are now checked in", Toast.LENGTH_SHORT).show()
+            currentIndex += 1
 
         }
+
+        currentIndex += 1
+
 
     }
 

@@ -6,8 +6,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+
 
 private const val TAG = "PiratePlacesActivity"
+private const val KEY_INDEX = "index"
 
 class PiratePlacesActivity : AppCompatActivity() {
 
@@ -27,10 +31,18 @@ class PiratePlacesActivity : AppCompatActivity() {
     private var beginningOfTheList = 0
     private var currentIndex = 0
 
+
+    private val piratesViewModel: PiratesViewModel by lazy {
+        ViewModelProviders.of(this).get(PiratesViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_pirate_places)
+
+        var currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
+        piratesViewModel.currentIndex = currentIndex
 
         nextButton = findViewById(R.id.next_button)
         prevButton = findViewById(R.id.prev_button)
@@ -44,7 +56,7 @@ class PiratePlacesActivity : AppCompatActivity() {
 
            if ( currentIndex > endOfTheList) {
 
-                Toast.makeText(this, "you are at the end of the list", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "you are at the end of the list!", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -62,7 +74,7 @@ class PiratePlacesActivity : AppCompatActivity() {
             if (currentIndex < beginningOfTheList)
             {
 
-                Toast.makeText(this, "you are at the end of the list", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "you are at the beginning of the list!", Toast.LENGTH_SHORT).show()
             //    onBackPressed()
 
             }
@@ -70,7 +82,7 @@ class PiratePlacesActivity : AppCompatActivity() {
             else
             {
 
-            updateTextView()
+            goBackList()
             //updateUI()
 
             }
@@ -82,23 +94,64 @@ class PiratePlacesActivity : AppCompatActivity() {
             val currentPlace = placesAndPeople[currentIndex].placeId
             val intent = CheckInActivity.newIntent(this@PiratePlacesActivity, currentPlace)
             startActivity(intent)
+
         }
 
     }
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart() called")    }
 
-        private fun advanceList() {
-            currentIndex = (currentIndex + 1) % placesAndPeople.size
-            updateTextView()
-//            updateUI()
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume() called")    }
 
-        }
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause() called")    }
 
-        private fun updateTextView() {
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        super.onSaveInstanceState(savedInstanceState)
+        Log.i(TAG, "onSaveInstanceState")
+        savedInstanceState.putInt(KEY_INDEX,  piratesViewModel.currentIndex)
+    }
 
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop() called")    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy() called")    }
+
+    private fun advanceList() {
+
+            currentIndex += 1
             val placeTextResId = placesAndPeople[currentIndex].placeId
             val visitorTextResId = placesAndPeople[currentIndex].visitorId
             placeTextView.setText(placeTextResId)
             visitorTextView.setText(visitorTextResId)
+
+//          updateUI()
+
+        }
+
+
+    private fun goBackList() {
+
+        currentIndex -= 1
+        val placeTextResId = placesAndPeople[currentIndex].placeId
+        val visitorTextResId = placesAndPeople[currentIndex].visitorId
+        placeTextView.setText(placeTextResId)
+        visitorTextView.setText(visitorTextResId)
+
+//          updateUI()
+
+    }
+
+
+        private fun updateTextView() {
+
 
 
         }
