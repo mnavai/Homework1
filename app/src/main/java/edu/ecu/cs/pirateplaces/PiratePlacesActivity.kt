@@ -103,12 +103,6 @@ class PiratePlacesActivity : AppCompatActivity() {
 
         }
 
-//        override fun onBackPressed() {
-//
-//        }
-
-
-
 
 }
 
